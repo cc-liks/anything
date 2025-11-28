@@ -4,7 +4,7 @@ from typing import List, Dict, Any, Union
 from llama_index.core import SimpleDirectoryReader
 
 
-class FileManager_LI:
+class FileManagerLI:
     """
     使用 LlamaIndex 的文件管理器：
     - 自动识别文件类型

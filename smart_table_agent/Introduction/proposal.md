@@ -127,6 +127,7 @@ smart_table_agent/
 │
 ├── file_processing/            # 文件处理模块
 │   ├── __init__.py
+│   ├── file_manager.py         # 文件管理
 │   ├── file_utils.py           # 上传/下载/保存/读取文件
 │   └── table_parser.py         # 表格解析与清洗
 │
