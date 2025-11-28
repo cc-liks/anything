@@ -1,1 +1,5 @@
 # python3.11
+pandas==2.2.3
+langchain==1.1.0
+langchain-community==0.4.1
+llama-index==0.14.8
