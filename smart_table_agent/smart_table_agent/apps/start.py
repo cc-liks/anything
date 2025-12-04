@@ -1,6 +1,19 @@
-
+from smart_table_agent.file_processing.file_manager import FileManager
 from smart_table_agent.models_manager.model_manager import ModelManager
 
+
+class SmartTableAgent:
+
+    def __init__(self):
+        self.model_manager = ModelManager()
+        self.file_manager = FileManager()
+        self._init_info()
+
+    def _init_info(self):
+        self.model_manager.register_model("test_model", "DeepSeek")
+
+    def run(self):
+        pass
 
 
 # # -----------------------------
@@ -114,5 +127,5 @@ from smart_table_agent.models_manager.model_manager import ModelManager
 
 
 def start_main():
-    model_manager = ModelManager()
-    model_manager.register_model("test_model", "DeepSeek", )
+    smart_table_agent = SmartTableAgent()
+    smart_table_agent.run()
