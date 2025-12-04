@@ -18,8 +18,9 @@ class Claude:
         529: "Anthropic的API暂时过载"
     }
 
-    def __init__(self):
+    def __init__(self, model_name=None, api_key=None):
         self.client = Anthropic(api_key=self.api_key)
+
         self.messages = []
 
     def request(self, user_input, stream_b=True):
