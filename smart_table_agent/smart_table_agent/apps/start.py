@@ -22,7 +22,8 @@ class SmartTableAgent:
         print("现在可以开始聊天了:")
         stream = True
         while True:
-            input_info = input()
+            input_info = input()+"中文回答"
+            print(input_info)
             content = self.model_manager.multiple_requests("test_model", input_info, stream=stream,
                                                            stream_callback=stream_recallback,
                                                            tools=self.function_call.tools)
