@@ -47,7 +47,7 @@ class DeepSeek(LLMBase, ABC):
             self.chat_history = [{"role": "user", "content": user_input_info}]
         else:
             self.chat_history.append({"role": "user", "content": user_input_info})
-        response = self._send_request(self.chat_history)
+        response = self._send_request(self.chat_history, stream=stream)
         response_content = self._response_handle(response, stream=stream, stream_callback=stream_callback)
         return response_content
 

@@ -2,6 +2,10 @@ from smart_table_agent.file_processing.file_manager import FileManager
 from smart_table_agent.models_manager.model_manager import ModelManager
 
 
+def stream_recallback(info):
+    print(info, end="")
+
+
 class SmartTableAgent:
 
     def __init__(self):
@@ -13,7 +17,12 @@ class SmartTableAgent:
         self.model_manager.register_model("test_model", "DeepSeek")
 
     def run(self):
-        pass
+        print("现在可以开始聊天了:")
+        while True:
+            input_info = input()
+            content = self.model_manager.multiple_requests("test_model", input_info, stream=True,
+                                                           stream_callback=stream_recallback)
+            print()
 
 
 # # -----------------------------

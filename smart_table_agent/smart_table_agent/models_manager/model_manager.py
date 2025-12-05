@@ -68,3 +68,32 @@ class ModelManager:
             return None
         return self.models[unique_name]
 
+    def multiple_requests(self, unique_name: str, input_info: str, stream=True, stream_callback=None):
+        """
+        多轮对话
+        :param unique_name:
+        :param input_info:
+        :param stream:
+        :param stream_callback:
+        :return:
+        """
+        llm = self.get_model(unique_name)
+        if llm is not None:
+            content = llm.multiple_requests(user_input_info=input_info, stream=stream, stream_callback=stream_callback)
+            return content
+        return None
+
+    def single_request(self, unique_name: str, user_input, stream=False, stream_callback=None):
+        """
+        模型单次请求
+        :param unique_name:
+        :param user_input:
+        :param stream: stream=True的时候，启用流示返回
+        :param stream_callback:
+        :return:
+        """
+        llm = self.get_model(unique_name)
+        if llm is not None:
+            content = llm.single_request(user_input, stream=stream, stream_callback=stream_callback)
+            return content
+        return None
