@@ -1,5 +1,5 @@
 from smart_table_agent.file_processing.file_manager import FileManager
-from smart_table_agent.models_manager.function_manager import FunctionManager
+from smart_table_agent.models_manager.function_manager import MyFunctions
 from smart_table_agent.models_manager.model_manager import ModelManager
 
 
@@ -11,7 +11,7 @@ class SmartTableAgent:
 
     def __init__(self):
         self.model_manager = ModelManager()
-        self.function_call = FunctionManager()
+        self.function_call = MyFunctions()
         self.file_manager = FileManager()
         self._init_info()
 

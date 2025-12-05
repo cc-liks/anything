@@ -3,14 +3,14 @@ from abc import ABC
 import json
 from openai import OpenAI
 from .llm_base import LLMBase
-from ..function_manager import FunctionManager
+from ..function_manager import MyFunctions
 
 __all__ = ["DeepSeek"]
 
 
 class DeepSeek(LLMBase, ABC):
     base_url = "https://api.deepseek.com"
-    function_call = FunctionManager()
+    function_call = MyFunctions()
 
     def __init__(self, model_name=None, api_key=None):
         if api_key is None:
