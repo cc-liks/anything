@@ -35,6 +35,7 @@ file_manager/
     │ 
     └─ utils/ 
         ├─ __init__.py 
+        ├─ http.py #  请求调用工具
         └─ range.py # Range 解析（HTTP Range -> core Range）
 
 
