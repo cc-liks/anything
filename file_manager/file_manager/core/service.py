@@ -19,6 +19,11 @@ class FileManagerService:
     """
 
     def __init__(self, *, storage: Storage, repo: FileRepository) -> None:
+        """
+
+        :param storage:
+        :param repo:
+        """
         self.storage = storage
         self.repo = repo
 
@@ -36,6 +41,12 @@ class FileManagerService:
         1) 生成 storage_key
         2) 写入 storage
         3) 写入 repo 元数据
+        :param tenant_id:
+        :param filename:
+        :param content_type:
+        :param body:
+        :param metadata:
+        :return:
         """
         file_id: str = f"f_{uuid.uuid4().hex}"
         storage_key: str = make_storage_key(tenant_id, filename)
@@ -60,7 +71,12 @@ class FileManagerService:
         return await self.repo.create(rec)
 
     async def info(self, *, tenant_id: str, file_id: str) -> FileRecord:
-        """读取文件元信息"""
+        """
+        读取文件元信息
+        :param tenant_id:
+        :param file_id:
+        :return:
+        """
         return await self.repo.get(tenant_id, file_id)
 
     async def download(
@@ -77,6 +93,10 @@ class FileManagerService:
         - rec：文件记录
         - meta：对象元信息
         - ranged：如果是 Range 请求，返回 (start, end_inclusive)；否则 None
+        :param tenant_id:
+        :param file_id:
+        :param byte_range:
+        :return:
         """
         rec: FileRecord = await self.repo.get(tenant_id, file_id)
 
@@ -100,6 +120,9 @@ class FileManagerService:
         删除文件（幂等）：
         - repo 软删
         - storage 物理删（后期可改为异步）
+        :param tenant_id:
+        :param file_id:
+        :return:
         """
         try:
             rec = await self.repo.get(tenant_id, file_id)
@@ -118,5 +141,12 @@ class FileManagerService:
         cursor: Optional[str] = None,
         q: Optional[str] = None,
     ) -> Tuple[List[FileRecord], Optional[str]]:
-        """文件列表（简单分页接口，cursor 可后续扩展）"""
+        """
+        文件列表（简单分页接口，cursor 可后续扩展）
+        :param tenant_id:
+        :param limit:
+        :param cursor:
+        :param q:
+        :return:
+        """
         return await self.repo.list(tenant_id, limit=limit, cursor=cursor, q=q)
